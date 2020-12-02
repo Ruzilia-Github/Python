@@ -50,7 +50,7 @@ for i in range(len(a)):
     if i%2 == 0:
         a_even += int(a[i])
     else:
-       a_odd += int(a[i])
+       a_odd += int(a[i])3
 diff = a_even - a_odd
 if diff % 11==0:
      print("YES")
