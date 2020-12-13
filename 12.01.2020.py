@@ -101,3 +101,12 @@ while a <= b:
     a *= 3
     b *= 2
 print(count)
+__________________________
+n,k = map(int,input().split())
+i=1
+count=1
+while  k+i <= 240 and i<n:
+        i=5*i
+        count +=1
+print(count)
+
