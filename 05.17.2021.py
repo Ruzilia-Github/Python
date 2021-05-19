@@ -1,3 +1,10 @@
+# n=int(input())
+# for i range (n+1):
+#     for j range (1,i+1):
+#         print(i)
 
-print("test last")
-print("ruzilia's test")
+n=int(input())
+for i in range(n+1):
+    for j in range(1,i+1):
+        print(j,end =' ')
+    print()
