@@ -1625,6 +1625,15 @@ import math
 # 1
 
 
+n=int(input())
+prelarge=0
+large=0
+for i  in  range(n):
+    a = int(input())
+    if large>a:
+           large=a
+           prelarge=large
+print(large, prelarge)
 # n=int(input())
 # prelarge=0
 # large=0
