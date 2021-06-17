@@ -799,12 +799,50 @@
 #
 # 2
 
-s = input().split()
-count = 0
-# for i in s:
-#     for j in s:
-for i in range(len(s)):
-    for j in range(i+1, len(s)):
-        if int(s[i]) == int(s[j]):
-            count +=1
-print(count)
+# s = input().split()
+# count = 0
+# # for i in s:
+# #     for j in s:
+# for i in range(len(s)):
+#     for j in range(i+1, len(s)):
+#         if int(s[i]) == int(s[j]):
+#             count +=1
+# print(count)
+
+# numbers = [8, 9, 10, 11]
+#
+# numbers.remove(9)
+# numbers.insert(1, 17) # Заменил второй элемент списка на 17;
+# numbers.insert(4, 4) # Добавил числа 4, 5 и 6 в конец списка;
+# numbers.insert(5, 5)
+# numbers.insert(6, 6)
+# numbers.remove(8)# Удалил первый элемент списка;
+# numbers = numbers*2 # Удвоил список;
+# numbers.insert(3, 25) # Вставил число 25 по индексу 3;
+# print(numbers) # Вывел список, с помощью функции print().
+#
+# numbers = [8, 9, 10, 11]
+#
+# numbers[1] = 17
+# numbers.extend([4, 5, 6])
+# del numbers[0]
+# numbers *= 2
+# numbers.insert(3, 25)
+# print(numbers)
+#
+# Mikhail Oloventsev
+# 4 месяца назад
+# Ссылка
+#
+# .
+#
+#
+# Решение #363739110
+# 9 февраля 2021 г., 09:46
+# l = [8, 9, 10, 11]
+# l[1] = 17
+# l += [4, 5, 6]
+# del l[0]
+# l *= 2
+# l.insert(3, 25)
+# print(l)
