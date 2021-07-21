@@ -967,15 +967,176 @@
 #     print(s[i])
 # #        l.append(s[i])
 # # print(l)
+#
+# rows, cols = 3, 4                # rows - количество строк, cols - количество столбцов
+#
+# matrix  = [[277, -930, 11, 0],
+#            [9, 43, 6, 87],
+#            [4456, 8, 290, 7]]
+#
+# for r in range(rows):
+#     for c in range(cols):
+#         print(str(matrix[r][c]).ljust(6), end='')
+#     print()
 
-rows, cols = 3, 4                # rows - количество строк, cols - количество столбцов
+# Вывести матрицу 1
+# На вход программе подаются два натуральных числа nn и mm, каждое на отдельной строке — количество строк и столбцов в матрице. Далее вводятся сами элементы матрицы — слова, каждое на отдельной строке; подряд идут элементы сначала первой строки, затем второй, и т.д.
+#
+# Напишите программу, которая сначала считывает элементы матрицы один за другим, затем выводит их в виде матрицы.
+#
+# Формат входных данных
+# На вход программе подаются два числа nn и mm — количество строк и столбцов в матрице, далее идут n \times mn×m слов, каждое на отдельной строке.
+#
+# Формат выходных данных
+# Программа должна вывести считанную матрицу, разделяя ее элементы одним пробелом.
+#
+# Sample Input 1:
+#
+# 4
+# 2
+# и
+# швец
+# и
+# жнец
+# и
+# на
+# дуде
+# игрец
+# Sample Output 1:
+#
+# и швец
+# и жнец
+# и на
+# дуде игрец
 
-matrix  = [[277, -930, 11, 0],
-           [9, 43, 6, 87],
-           [4456, 8, 290, 7]]
 
-for r in range(rows):
-    for c in range(cols):
-        print(str(matrix[r][c]).ljust(6), end='')
-    print()
 
+# n = int(input())
+# m = int(input())
+# matrix = [[0]*m for _ in range(n)]
+#
+# for r in range(n):
+#     for c in range(m):
+#         matrix[r][c] = input()
+#         print(matrix[r][c], end=' ')
+#     print()
+
+
+#
+# n, m = int(input()), int(input())
+# for i in range(n):
+#     for j in range(m):
+#         print(input(), end = ' ')
+#     print()
+
+# Вывести матрицу 2
+# На вход программе подаются два натуральных числа nn и mm, каждое на отдельной строке — количество строк и столбцов в матрице. Далее вводятся сами элементы матрицы — слова, каждое на отдельной строке; подряд идут элементы сначала первой строки, затем второй, и т.д.
+#
+# Напишите программу, которая считывает элементы матрицы один за другим, выводит их в виде матрицы, выводит пустую строку, и снова ту же матрицу, но уже поменяв местами строки со столбцами: первая строка выводится как первый столбец, и так далее.
+#
+# Формат входных данных
+# На вход программе подаются два числа nn и mm — количество строк и столбцов в матрице, далее идут n \times mn×m слов, каждое на отдельной строке.
+#
+# Формат выходных данных
+# Программа должна вывести считанную матрицу, за ней пустую строку, и ту же матрицу, но поменяв местами строки со столбцами. Элементы матрицы разделять одним пробелом.
+#
+# Sample Input 1:
+#
+# 4
+# 2
+# и
+# швец
+# и
+# жнец
+# и
+# на
+# дуде
+# игрец
+# Sample Output 1:
+#
+# и швец
+# и жнец
+# и на
+# дуде игрец
+#
+# и и и дуде
+# швец жнец на игрец
+
+# n, m = int(input()), int(input())
+# matrix = [[0]*m for _ in range(n)]
+#
+# for r in range(n):
+#     for c in range(m):
+#         matrix[r][c] = input()
+#         print(matrix[r][c], end=' ')
+#     print()
+# print()
+# for c in range(m):
+#     for r in range(n):
+#         print(matrix[r][c], end=' ')
+#     print()
+#
+
+# n, m = int(input()), int(input())
+# arr = [[input() for _ in range(m)] for _ in range(n)]
+#
+#
+# for row in arr:
+#     print(*row)
+# print()
+# for i in range(m):
+#     for j in range(n):
+#         print(arr[j][i], end=' ')
+#     print()
+
+# n = int(input())
+# # arr = [[map(int, input().split()) for i in range(n)] for i in range(n)]
+# arr = [[int.input() for i in range(n)] for j in range(n)]
+
+# n = int(input())
+# matrix = [[0]*n for _ in range(n)]
+#
+# for r in range(n):
+#     for c in range(n):
+#         matrix[r][c] = map(int, input().split())
+#         print(matrix[r][c], end=' ')
+#     print()
+#
+# for row in matrix:
+#     print(*row)
+
+# arr = []
+# total = 0
+# n = int(input())
+# for i in range(n):
+#     arr.append((map(int, input().split())))
+#
+# for i in arr:
+#     for j in arr:
+#         print(arr[i][j], end=' ')
+#     print()
+
+# n = int(input())
+# matrix = [[0]*n for _ in range(n)]
+#
+# for r in range(n):
+#     for c in range(n):
+#         matrix[r][c] = int(input()).split()
+#         print(matrix[r][c], end=' ')
+#     print()
+# print()
+# for c in range(n):
+#     for r in range(n):
+#         print(matrix[r][c], end=' ')
+#     print()
+
+n = int(input())
+matrix = []
+s=0
+for i in range(n):
+    temp = [int(num) for num in input().split()]
+    matrix.append(temp)
+
+for i in range(n):
+    s += matrix[i][i]
+print(s)
