@@ -1972,16 +1972,16 @@
 # 10 9  8  7  6
 # 11 12 13 14 15
 
-row, col = input().split()
-
-lst = [['0'.ljust(3) for x in range(int(col))] for _ in range(int(row))]
-counter = 1
-
-for i in range(int(row)):
-    for j in range(int(col)):
-        # if i%2 ==0:
-           lst[i][j] = counter
-           counter += 1
+# row, col = input().split()
+#
+# lst = [['0'.ljust(3) for x in range(int(col))] for _ in range(int(row))]
+# counter = 1
+#
+# for i in range(int(row)):
+#     for j in range(int(col)):
+#         # if i%2 ==0:
+#            lst[i][j] = counter
+#            counter += 1
         # if i%2 !=0:
         #     lst[i][j] = counter + int(row)
         #     counter -= 1
@@ -1993,8 +1993,78 @@ for i in range(int(row)):
 #         #     print(reverse(str(lst[i][j]).ljust(3)), end=' ')
 #     print()
 
-for i in lst:
-    # if int(i) % 2 == 0:
-        print(i[::-1])
-    # else:
-    #     print(* i)
+# for i in lst:
+#     # if int(i) % 2 == 0:
+#         print(i[::-1])
+#     # else:
+#     #     print(* i)
+
+# n, m = map(int, input().split())
+# mtr = [["."for i in range(m)] for j in range(n + 1)]
+# for i in range(1, n + 1):
+#     if i > m:
+#         i = 1
+#     a = i
+#     for j in range(m):
+#         if i > j:
+#             i = 1
+#             a = i
+#         mtr[i][j] = a
+#         print(a, end=' ')
+#         if a == m:
+#            a = 1
+#         else:
+#            a +=1
+#     print()
+
+# n, m = map(int, input().split())
+# mtr1 = [[int(i) for i in input().split()] for j in range(m)]
+# print()
+# mtr2 = [[int(i) for i in input().split()] for j in range(m)]
+# for i in range(n):
+#     for j in range(m):
+#         print(mtr1[i][j], end=' ')
+#     print()
+# for i in range(n):
+#     for j in range(m):
+#         print(mtr2[i][j], end=' ')
+#     print()
+
+# heads = 35  # количество голов
+# legs = 94  # количество ног
+#
+# for r in range(heads + 1):  # количество кроликов
+#     for ph in range(heads + 1):  # количество фазанов
+#         #  если суммарное количество голов превышено или ног превышено, то переходим на следующий шаг цикла
+#         if (r + ph) > heads or \
+#             (r * 4 + ph * 2) > legs:
+#             continue
+#         if (r + ph) == heads and (r * 4 + ph * 2) == legs:
+#             print("Количество кроликов", r)
+#             print("Количество фазанов", ph)
+#             print("---")
+
+#
+# tuples = [(), (), ('',), ('a', 'b'), (), ('a', 'b', 'c'), (1,), (), (), ('d',), ('', ''), ()]
+# non_empty_tuples = []
+# for i  in tuples:
+#     if i == ():
+#        continue
+#     else:
+#        non_empty_tuples.append(i)
+# print(non_empty_tuples)
+
+tuples = [(10, 20, 40), (40, 50, 60), (70, 80, 90), (10, 90), (1, 2, 3, 4), (5, 6, 10, 2, 1, 77)]
+new_tuples = []
+print(type(new_tuples))
+# for i in tuples:
+#     i = list(i)
+#     print(i)
+#    for j in range(len(i)):
+#       if j == i[-1]:
+#          j = 100
+#          new_tuples.append(i)
+#       else:
+#           new_tuples.append(i)
+# print(new_tuples)
+
