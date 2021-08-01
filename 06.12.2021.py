@@ -2054,17 +2054,63 @@
 #        non_empty_tuples.append(i)
 # print(non_empty_tuples)
 
-tuples = [(10, 20, 40), (40, 50, 60), (70, 80, 90), (10, 90), (1, 2, 3, 4), (5, 6, 10, 2, 1, 77)]
-new_tuples = []
-print(type(new_tuples))
+# tuples = [(10, 20, 40), (40, 50, 60), (70, 80, 90), (10, 90), (1, 2, 3, 4), (5, 6, 10, 2, 1, 77)]
+# new_tuples = []
+# # print(type(new_tuples))
 # for i in tuples:
 #     i = list(i)
-#     print(i)
-#    for j in range(len(i)):
-#       if j == i[-1]:
-#          j = 100
-#          new_tuples.append(i)
-#       else:
-#           new_tuples.append(i)
+#     n = []
+#     for j in i:
+#         if j == i[-1]:
+#            j = 100
+#         n.append(j)
+#         a = tuple(n)
+#     new_tuples.append(a)
 # print(new_tuples)
+
+# Дополните приведенный код так, чтобы переменная new_tuples, содержала список кортежей на основе списка tuples с последним элементом каждого кортежа, замененным на численное значение 100100.
+
+# tuples = [(10, 20, 40), (40, 50, 60), (70, 80, 90), (10, 90), (1, 2, 3, 4), (5, 6, 10, 2, 1, 77)]
+# new_tuples = [i[:-1] + (100,) for i in tuples]
+# print(new_tuples)
+
+# poet_data = ('Пушкин', 1799, 'Санкт-Петербург')
+# poet_data = list(poet_data)
+# poet_data[2] = 'Москва'
+# poet_data = tuple(poet_data)
+# print(poet_data)
+#
+# n = int(input())
+# l = []
+# for i in range(n):
+#     a = input().split()
+#     l.append(a)
+# for j in l:
+#     print(*j)
+# print()
+# for j in l:
+#     if '4' in j[1] or '5' in j[1]:
+#         print(*j)
+#
+# a, b, c = 10, 20, 30
+# c, b, a = a + b, b*2, a + b + c
+#
+# print(a, b, c)
+
+# n = int(input())
+# s = []
+# a, b, c = 1,1,1
+# for i in range(n):
+#     if i < 3:
+#        s.append(c)
+#     else:
+#        a = s[i-3]
+#        b = s[i - 2]
+#        c = s[i - 1]
+#        c = a + b + c
+#        s.append(c)
+# print(*s)
+
+a, *b, c = 'No bees', 'no honey'
+print(b)
 
