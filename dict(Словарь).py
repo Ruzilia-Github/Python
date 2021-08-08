@@ -195,17 +195,121 @@
 # print(a)
 #
 # ________________________________________________________________________
+#
+# letters = [c for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789']
+# morse = ['.-', '-...', '-.-.', '-..', '.', '..-.', '--.', '....', '..', '.---', '-.-', '.-..', '--', '-.', '---', '.--.', '--.-', '.-.', '...', '-', '..-', '...-', '.--', '-..-', '-.--', '--..', '-----', '.----', '..---', '...--', '....-', '.....', '-....', '--...', '---..', '----.']
+# d = dict(zip(letters, morse))
+# a = ''
+# for key in input().upper():
+#     try:
+#         a += d[key] + " "
+#     except:
+#         if key not in d:
+#             continue
+#
+# print(a)
 
-letters = [c for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789']
-morse = ['.-', '-...', '-.-.', '-..', '.', '..-.', '--.', '....', '..', '.---', '-.-', '.-..', '--', '-.', '---', '.--.', '--.-', '.-.', '...', '-', '..-', '...-', '.--', '-..-', '-.--', '--..', '-----', '.----', '..---', '...--', '....-', '.....', '-....', '--...', '---..', '----.']
-d = dict(zip(letters, morse))
-a = ''
-for key in input().upper():
-    try:
-        a += d[key] + " "
-    except:
-        if key not in d:
-            continue
 
-print(a)
+#
+# Дополните приведенный код, чтобы в переменной result хранился словарь, в котором ключи – числа от 11 до 1515 (включительно), а значения представляют собой квадраты ключей.
+#
+# Примечание. Выводить содержимое словаря result не нужно.
+
+# n = [i for i in range(1,16)]
+# n2 = [i**2 for i in range(1,16)]
+# d = dict(zip(n, n2))
+# print(d)
+# _____________
+#
+# result = {i: i**2 for i in range(1, 16)}
+# print(result)
+# ______________
+# result = {}
+# for i in range(1, 16):
+#     result.setdefault(i, i**2)
+# ____________________________________________________________________________
+
+# dict1 = {'a': 100, 'z': 333, 'b': 200, 'c': 300, 'd': 45, 'e': 98, 't': 76, 'q': 34, 'f': 90, 'm': 230}
+# dict2 = {'a': 300, 'b': 200, 'd': 400, 't': 777, 'c': 12, 'p': 123, 'w': 111, 'z': 666}
+# # result = dict1 | dict2
+# dict1.update(dict2)
+# result = dict1
+# dict1 = {'a': 100, 'z': 333, 'b': 200, 'c': 300, 'd': 45, 'e': 98, 't': 76, 'q': 34, 'f': 90, 'm': 230}
+# dict2 = {'a': 300, 'b': 200, 'd': 400, 't': 777, 'c': 12, 'p': 123, 'w': 111, 'z': 666}
+# for i in result:
+#     try:
+#       if i in dict1:
+#           result[i] = dict1[i] + dict2[i]
+#     except:
+#         result[i]=result[i]
+# print(result)
+
+# _____________________
+
+# dict1 = {'a': 100, 'z': 333, 'b': 200, 'c': 300, 'd': 45, 'e': 98, 't': 76, 'q': 34, 'f': 90, 'm': 230}
+# dict2 = {'a': 300, 'b': 200, 'd': 400, 't': 777, 'c': 12, 'p': 123, 'w': 111, 'z': 666}
+#
+# result = {i: dict1.get(i, 0) + dict2.get(i, 0) for i in set(dict1.keys() | dict2.keys())}
+
+# Дополните приведенный код так, чтобы в переменной result хранился словарь, в котором для каждого символа строки text будет подсчитано количество его вхождений.
+#
+# Примечание. Выводить содержимое словаря result не нужно.
+
+# text = 'footballcyberpunkextraterritorialityconversationalistblockophthalmoscopicinterdependencemamauserfff'
+# result = {}
+# for num in text:
+#     result[num] = result.get(num, 0) + 1
+# print(result)
+
+# Дополните приведенный код, чтобы он вывел наиболее часто встречающееся слово строки s. Если таких слов несколько, должно быть выведено то, что меньше в лексикографическом порядке.
+
+import collections
+s = 'orange strawberry barley gooseberry apple apricot barley currant orange melon pomegranate banana banana orange barley apricot plum grapefruit banana quince strawberry barley grapefruit banana grapes melon strawberry apricot currant currant gooseberry raspberry apricot currant orange lime quince grapefruit barley banana melon pomegranate barley banana orange barley apricot plum banana quince lime grapefruit strawberry gooseberry apple barley apricot currant orange melon pomegranate banana banana orange apricot barley plum banana grapefruit banana quince currant orange melon pomegranate barley plum banana quince barley lime grapefruit pomegranate barley'
+
+# n = [i for i in s.split()]
+# result={}
+# for j in n:
+#     result[j] = result.get(j, 0)+1
+# # print(result)
+# # print(max(result.values()))
+# a = []
+# for z in result:
+#     try:
+#         if result[z] == max(result.values()):
+#             a.append(z)
+#     except:
+#         continue
+# print(a[0])
+
+pets = [('Hatiko', 'Parker', 'Wilson', 50),
+        ('Rusty', 'Josh', 'King', 25),
+        ('Fido', 'John', 'Smith', 28),
+        ('Butch', 'Jake', 'Smirnoff', 18),
+        ('Odi', 'Emma', 'Wright', 18),
+        ('Balto', 'Josh', 'King', 25),
+        ('Barry', 'Josh', 'King', 25),
+        ('Snape', 'Hannah', 'Taylor', 40),
+        ('Horry', 'Martha', 'Robinson', 73),
+        ('Giro', 'Alex', 'Martinez', 65),
+        ('Zooma', 'Simon', 'Nevel', 32),
+        ('Lassie', 'Josh', 'King', 25),
+        ('Chase', 'Martha', 'Robinson', 73),
+        ('Ace', 'Martha', 'Williams', 38),
+        ('Rocky', 'Simon', 'Nevel', 32)]
+
+list = []
+dog_owner = {}
+from pprint import pprint
+for i in pets:
+        name=i[1],i[2],str(i[3])
+        dog=i[0]
+        dog_owner.setdefault(name, []).append(dog)
+
+pprint(dog_owner)
+
+for i in pets:
+        name=i[1],i[2],str(i[3])
+        dog=i[0]
+        dog_owner.setdefault(name, []).append(dog)
+result=dog_owner
 
