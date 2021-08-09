@@ -14,6 +14,9 @@ ______________________________________________________________________
 
 words = [i.lower().strip('.,,,!,?,:,;,-') for i in input().split()]
 
+__________________________________________________
+words2 = words1.replace('!','')
+
 2.   Посчитать  кол-во  значений в  строке
 
 text = 'footballcyberpunkextraterritorialityconversationalistblockophthalmoscopicinterdependencemamauserfff'
@@ -37,4 +40,66 @@ for num in numbers:
     else:
         result[num] += 1
 
-3.
+3. Соединение 2 списков  в словарь
+
+letters = [c for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789']
+morse = ['.-', '-...', '-.-.', '-..', '.', '..-.', '--.', '....', '..', '.---', '-.-', '.-..', '--', '-.', '---', '.--.', '--.-', '.-.', '...', '-', '..-', '...-', '.--', '-..-', '-.--', '--..', '-----', '.----', '..---', '...--', '....-', '.....', '-....', '--...', '---..', '----.']
+d = dict(zip(letters, morse))
+
+4  Красивое  оформление словоря
+
+from pprint import pprint
+pprint(dict)
+
+5. Создание  словоря  из строки "Змея: язык программирования Python", где "Змея"  - ключ "язык программирования Python"-значение
+result = {}
+for i in range(int(input())):
+    tmp = input().split(': ')
+    result[tmp[0]] = tmp[1]
+______________
+d = {}
+for _ in range(int(input())):
+    a, *b = input().split()
+    d.update(dict.fromkeys(b, a))
+
+https://www.youtube.com/watch?v=4jUxJULjvpY&t=2s&ab_channel=IsraelAizen
+_____________
+
+s = {}
+for i in range(int(input())):
+    a = input().split()
+    s[a[0]] = tuple(a[1:])
+
+________________
+s = {}
+for i in range(int(input())):
+    a = input().split()
+    s[a[0]] = tuple(a[1:])
+_________________
+d={}
+for _ in range(int(input())):
+    a=input().split()
+    for c in a[1:]:
+        d[c]=a[0]
+
+________________
+def sity_country(num):
+    dct = {}
+    for i in range(num):
+        a, *b = tuple(input().split())
+        b = tuple(b)
+        dct[b] = a
+    return dct
+
+
+
+6 Добавление элементов  в словать
+
+dic.setdefault(name, []).append(dog)
+
+https: // www.youtube.com / watch?v = WNs9 - 1s4ir0 & ab_channel = PrettyPrinted
+
+https: // www.youtube.com / watch?v = DyQrka_nbWs & ab_channel = PythonProgrammer
+
+
+
