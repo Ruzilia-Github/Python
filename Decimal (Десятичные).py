@@ -21,16 +21,28 @@
 # print(*sorted(l, reverse=True)[:5])
 
 # Дополните приведенный код, чтобы он вывел сумму наибольшей и наименьшей цифры Decimal числа.
+#
+# from decimal import *
+# num = input()
+# num = num.replace("-", "")
+# num = Decimal(num)
+#
+# if num >= 1:
+#    print(max(num.as_tuple().digits) + min(num.as_tuple().digits))
+# else:
+#    print(max(num.as_tuple().digits))
 
-from decimal import *
-num = input()
-num = num.replace("-", "")
-num = Decimal(num)
+# На вход программе подается Decimal число dd. Напишите программу, которая вычисляет значение выражения:
 
-if num >= 1:
-   print(max(num.as_tuple().digits) + min(num.as_tuple().digits))
-else:
-   print(max(num.as_tuple().digits))
+# from decimal import *
+# n = Decimal(input())
+# print(n.sqrt() + n.exp() + n.ln() + n.log10())
+# _____________
+#
+# from decimal import Decimal as D
+# d = D(input())
+# print(sum(func() for func in (d.exp, d.ln, d.log10, d.sqrt)))
+
 
 
 
