@@ -51,8 +51,9 @@
 
 # ___________________________________________________________________________
 # Дано натуральное число nn и два комплексных числа . Напишите программу, которая вычисляет и выводит значение выражения
-from cmath import *
-n = int(input())
-a = complex(input())
-b = complex(input())
-print((a**n) + (b**n) + (a.conjugate()** n) + (b.conjugate()** (n +1)))
+# from cmath import *
+# n = int(input())
+# a = complex(input())
+# b = complex(input())
+# print((a**n) + (b**n) + (a.conjugate()** n) + (b.conjugate()** (n +1)))
+
