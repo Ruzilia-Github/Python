@@ -113,29 +113,134 @@
 # 0.0
 # 3.5
 # 5.5
-
-def mean(*args):
-    sum = 0
-    count = 0
-    for i in args:
-        print(type(i))
-        if 0 <= i <= 9:
-            sum += i
-            return sum
-            count +=1
-        else:
-            continue
-    return sum / count
-
-
+#
+# def mean(*args):
+#     sum = 0
+#     count = 0
+#     for i in args:
+#         if type(i) is float or type(i) is int:
+#             sum += i
+#             count +=1
+#         else:
+#             continue
+#     if count == 0:
+#        return 0.0
+#     else:
+#        return sum / count
+#
+#
 # print(mean())
 # print(mean(7))
 # print(mean(1.5, True, ['stepik'], 'beegeek', 2.5, (1, 2)))
 # print(mean(True, ['stepik'], 'beegeek', (1, 2)))
 # print(mean(-1, 2, 3, 10, ('5')))
-print(mean(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
+# print(mean(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
+#
+# _________________________
+#
+# def mean(*args):
+#     nums = [i for i in args if type(i) in (int, float)]
+#     if len(nums) > 0:
+#         return sum(nums) / len(nums)
+#     else:
+#         return 0
+
+# ______________________________________________________________________________
+# Напишите функцию greet(), которая принимает произвольное количество аргументов строк имен (как минимум одно) и возвращает приветствие в соответствии с образцом.
+#
+# Примечание 1. Обратите внимание, что функция должна принимать не список, а именно произвольное количество аргументов.
+#
+# Примечание 2. Следующий программный код:
+#
+# print(greet('Timur'))
+# print(greet('Timur', 'Roman'))
+# print(greet('Timur', 'Roman', 'Ruslan'))
+# должен выводить:
+#
+# Hello, Timur!
+# Hello, Timur and Roman!
+# Hello, Timur and Roman and Ruslan!
+#
+# def greet(*args):
+#     return f"Hello, {' and '.join(args)}!"
+#
+# print(greet('Timur'))
+# print(greet('Timur', 'Roman'))
+# print(greet('Timur', 'Roman', 'Ruslan'))
+# __________________________________________________________________________
 
 
+# Напишите функцию print_products(), которая принимает произвольное количество аргументов и выводит список продуктов (любая непустая строка) по образцу: <номер продукта>) <название продукта> (нумерация продуктов начинается с единицы). Если среди переданных аргументов нет ни одного продукта, необходимо вывести текст Нет продуктов.
+#
+# Примечание 1. Обратите внимание, что функция должна принимать не список, а именно произвольное количество аргументов.
+#
+# Примечание 2. Числа, списки, кортежи, словари, множества и другие нестроковые объекты продуктами не являются и их нужно игнорировать.
 
+# def print_products(*args):
+#     count = 0
+#     for i in args:
+#         if i == "":
+#             continue
+#         if type(i) is str:
+#             count += 1
+#             #print(f"{count}) {i}")
+#         if type(i) is not str:
+#             continue
+#     if count == 0:
+#         pass
+#
+#
+#         # print("Нет продуктов")
+# print(print_products('Бананы', [1, 2], ('Stepik',), 'Яблоки', '', 'Макароны', 5, True))
+# print(print_products([4], {}, 1, 2, {'Beegeek'}, ''))
+# #
+#
+# # #-----------Birkan---------------
+# def Products(*args):
+#     """
+#     Put here description about your fonction like that
+#     """
+#     count = 0
+#     for i in args:
+#         if count == 0:
+#             pass
+#         if type(i) is str and len(i)!=0:
+#             count += 1
+#             print(f"{count}) {i}")
+#         else:
+#             pass
+#     if count == 0:
+#         print("Нет продуктов")
+#     return "heyy"
+#
+# Products('Бананы', [1, 2], ('Stepik',), 'Яблоки', '', 'Макароны', 5, True)
+# Products([4], {}, 1, 2, {'Beegeek'}, '')
+#
+# _______________________________________________________________________________________________
+# Напишите функцию info_kwargs(), которая принимает произвольное количество именованных аргументов и печатает именованные аргументы в соответствии с образцом: <имя аргумента>: <значение аргумента>, при этом имена аргументов следуют в алфавитном порядке (по возрастанию).
+#
+# Примечание 1. Обратите внимание, что функция должна принимать не список, а именно произвольное количество именованных аргументов.
+#
+# Примечание 2. Следующий программный код:
+#
+# info_kwargs(first_name='Timur', last_name='Guev', age=28, job='teacher')
+# должен выводить:
+#
+# age: 28
+# first_name: Timur
+# job: teacher
+# last_name: Guev
 
-
+#
+# def info_kwargs(**kwargs):
+#     for key, value in sorted(kwargs.items()):
+#         print(f'{key}: {value}')
+# info_kwargs(first_name='Timur', last_name='Guev', age=28, job='teacher')
+#
+# --------------------
+# def info_kwargs(**kwargs):
+#     for key in sorted(kwargs):
+#         print (key+':',kwargs[key])
+#
+#
+# ____________________________________________________________________
