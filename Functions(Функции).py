@@ -1121,21 +1121,208 @@
 # ___________________
 # print(*map(lambda c: 255 - int(c), input().split()))
 
+# list1 = [1, 2, 3, 4, 5]
+# list2 = [5, 4, 3, 2, 1]
+#
+# result = 0
+# for x, y in zip(list1, list2):
+#     result += x*y
+# print(result)
+# ________________________
+
+# def ignore_command(canommd):
+#     ignore = ['alias', 'configuration', 'ip', 'sql', 'select', 'update', 'exec', 'del', 'truncate']
+#
+# result = any(map(lambda x: x in canommd, ignore))
+#
+# print(ignore_command('get ip'))
+# print(ignore_command('select all'))
+# print(ignore_command('delete'))
+# print(ignore_command('trancate'))
+#
+# _______________________________
+#
+# Используя параллельную итерацию сразу по трем спискам countries, capitals и population выведите информацию о стране в формате:
+#
+# <capital> is the capital of <country>, population equal <population> people.
+#
+#
+# Moscow is the capital of Russia, population equal 145934462 people.
+# New York is the capital of USA, population equal 331002651 people.
+# ...
+# Для каждой страны информацию выводить на отдельной строке.
+
+# countries = ['Russia', 'USA', 'UK', 'Germany', 'France', 'India']
+# capitals = ['Moscow', 'New York', 'London', 'Berlin', 'Paris', 'Delhi']
+# population = [145_934_462, 331_002_651, 80_345_321, 67_886_011, 65_273_511, 1_380_004_385]
+# # population1 = all(population.replace('_', ''), population)
+# # print(population1)
+#
+#
+# for x, y, z in zip(capitals, countries, population):
+#     print(f"{x} is the capital of {y}, population equal {z} people.")
+# print(type(z))
+# ____________________________________
+#
+# [print(f'{b} is the capital of {a}, population equal {c} people.') for a, b, c in zip(countries, capitals, population)]
+# __________________________
+# print(*map(lambda x: f'{x[1]} is the capital of {x[0]}, population equal {x[2]} people.', zip(countries, capitals, population)), sep='\n')
+
+# __________________________________________________________________
+
+# На вход программе подаются три строки текста с вещественными числами, значениями абсцисс (xx), ординат (yy) и аппликат (zz) точек трехмерной плоскости. Напишите программу для проверки расположения всех точек с введенными координатами внутри либо на поверхности шара с центром в начале координат и радиусом R = 2R =2.
+#
+# Формат входных данных
+# На вход программе подаются три строки текста с вещественными числами, разделенными символом пробела – абсциссы, ординаты и аппликаты точек в трехмерной системе координат.
+#
+# Формат выходных данных
+# Программа должна вывести True если все точки с введенными координатами находятся внутри или на границе шара и False, если вне.
+#
+# Примечание 1. Гарантируется, что количество чисел во всех трех строках одинаковое.
+#
+# Примечание 2. Уравнение шара имеет вид x^2+y^2+z^2 = R^2x
+
+#
+# Примечание 3. Для решения задачи используйте встроенные функции all() и zip().
+#
+# Примечание 4. Используйте следующие названия abscissas, ordinates, applicates для соответствующих списков.
+#
+# Sample Input 1:
+#
+# 0.0 1.0 2.0
+# 0.0 0.0 1.1
+# 0.0 1.0 1.5
+# Sample Output 1:
+#
+# False
 
 
+# a = list(map(float, input().split()))
+# b = list(map(float, input().split()))
+# c = list(map(float, input().split()))
+#
+# print(all(map(lambda x: (x[0]**2 + x[1]**2 + x[2]**2) <= 4,  zip(a, b, c))))
 
+# ____________________
 
+# abscissas, ordinates, applicates=(map(float, input().split()) for _ in range(3))
+# # print(all(map(lambda x, y, z: (x**2+y**2+z**2)**0.5 <=2, abscissas,ordinates,applicates)))
+# print(all(x**2 + y**2 + z**2 <= 4 for x, y, z in zip(abscissas, ordinates, applicates)))
+# _____________________
 
+# abscissas = [float(i) for i in input().split()]
+# ordinates = [float(i) for i in input().split()]
+# applicates = [float(i) for i in input().split()]
+#
+# print(all(map(lambda x: x[0]**2 + x[1]**2 + x[2]**2 <= 4, zip(abscissas, ordinates, applicates))))
+# _______________________________________________________________________________________________
 
+# # print(s.isdigit())
+# n = input()
+# for i in n:
+#     if i in "qwertyuiopasdfghjklzxcvbnm":
+#        print(False)
+#
+# # num = map(int,input().split('.'))
+# # print(all(map(lambda x: (255 - int(x)) >= 0, num)))
+# print(all(map(lambda x: (255 - int(x)) >= 0, n.split('.'))))
 
+# ______________________________
+# Хороший пароль по условиям этой задачи состоит как минимум из 77 символов, содержит хотя бы одну цифру, заглавную и строчную букву. Напишите программу со встроенной функцией any() для определения хорош ли введенный пароль.
+#
+# Формат входных данных
+# На вход программе подаётся одна строка текста.
+#
+# Формат выходных данных
+# Программа должна вывести YES, если строка – хороший пароль, и NO в противном случае.
+#
+# Sample Input 1:
+#
+# abcABC9
+# Sample Output 1:
+#
+# YES
 
+# password = input()
+#
+# result1 = any(map(lambda x:  x in '0123456789', password))
+# result2 = any(map(lambda x:  x in 'qwertyuiopasdfghjklzxcvbnm', password))
+# result3 = any(map(lambda x:  x in 'QWERTYUIOPASDFGHJKLZXCVBNM', password))
+# result4 = len(password) >= 7
+#
+# if all([result1, result2, result3, result4]):
+#     print('YES')
+# else:
+#     print('NO')
+#
+# _______________________
+# s = input()
+# print('YES' if all((any(i.isupper() for i in s),
+#                     any(i.islower() for i in s),
+#                     any(i.isdigit() for i in s),
+#                     len(s) >= 7)) else 'NO')
+# _________________________
+# pr=input()
+# print('YES' if all([any(map(lambda t: t.isdigit(), pr)),pr.lower()!=pr,pr.upper()!=pr,(len(pr)>=7)]) else 'NO')
+# _____________________
+# print(['NO', 'YES'][(lambda x: len(x) > 6 and any(map(lambda c: 'a' <= c <= 'z', x)) and any(map(lambda c: '0' <= c <= '9', x)) and any(map(lambda c: 'A' <= c <= 'Z', x)))(input())])
+# _________________________
+# def g_p(password):
+#     l = any(map(lambda a: a.islower(), password))
+#     u = any(map(lambda a: a.isupper(), password))
+#     d = any(map(lambda a: a.isdigit(), password))
+#     return ('NO', 'YES')[all([l, u, d]) and len(password) >= 7]
+#
+# print(g_p(input()))
+# ____________________________________________________________________________________
 
+# Учитель Тимур проверял контрольные работы по математике в нескольких классах онлайн-школы BEEGEEK и решил убедиться, что в каждом классе есть хотя бы один отличник – ученик с оценкой 55 по контрольной работе. Напишите программу с использованием встроенных функций all(), any() для помощи Тимуру в проверке.
+#
+# Формат входных данных
+# На вход программе подается натуральное число nn – количество классов. Затем для каждого класса вводится блок информации вида:
+#
+# натуральное число kk – количество учеников в классе;
+# далее вводится kk строк вида: фамилия оценка.
+# Формат выходных данных
+# Программа должна вывести YES, если в каждом классе есть хотя бы один отличник, и NO в противном случае.
 
+# 4
+# 3
+# Васечкин 4
+# Илюшин 5
+# Кривцов 3
+# 2
+# Боталов 5
+# Петров 5
+# 3
+# Лебеда 4
+# Ивлев 4
+# Суворов 5
+# 2
+# Ласкер 4
+# Козлов 5
 
+# def any(n):
+#     l =  []
+#     for _ in range(n):
+#         count = 0
+#         for item in range(int(input())):
+#             a = input().split()
+#             if a[1] in '5':
+#                count +=1
+#                # print(count)
+#         l.append(count)
+#     # print(l)
+#     return ("NO", "YES") [all(map(lambda x: x >= 1, l))]
+# n = int(input())
+# print(any(n))
+# _________________________
+# print(["NO", "YES"][all([any([int(input().split()[1]) > 4 for _ in range(int(input()))]) for _ in range(int(input()))])])
 
-
-
-
-
-
-
+# _____________________
+#
+#
+# n = int(input())
+# l = [[int(input().split()[1]) for i in range(int(input()))] for i in range(n)]
+#
+# print('YES' if all(map(lambda x: 5 in x, l)) else 'NO')
