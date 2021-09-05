@@ -57,3 +57,4 @@
 # b = complex(input())
 # print((a**n) + (b**n) + (a.conjugate()** n) + (b.conjugate()** (n +1)))
 
+
