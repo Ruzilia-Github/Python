@@ -1114,14 +1114,35 @@ s = 'orange strawberry barley gooseberry apple apricot barley currant orange mel
 #
 # При оценивании вы можете получить 3 балла за верное выполнение первой части задания и 4 балла, если выполните вторую часть.
 
-per_cent = {'ТКБ': 5.6, 'СКБ': 5.9, 'ВТБ': 4.28, 'СБЕР': 4.0}
-money = int(input('Введите сумму денег, которую  планирует положить под проценты: '))
-max_deposit = 0
-deposit =[]
-for i in per_cent.values():
-    deposit.append(int((money /100) * i))
-print(f'Для даннной суммы денег депозиты в различных банках будут эквивалентны: {deposit}')
-print(f"Максимальная сумма, которую вы можете заработать — {max(deposit)}")
+# per_cent = {'ТКБ': 5.6, 'СКБ': 5.9, 'ВТБ': 4.28, 'СБЕР': 4.0}
+# money = int(input('Введите сумму денег, которую  планирует положить под проценты: '))
+# max_deposit = 0
+# deposit =[]
+# for i in per_cent.values():
+#     deposit.append(int((money /100) * i))
+# print(f'Для даннной суммы денег депозиты в различных банках будут эквивалентны: {deposit}')
+# print(f"Максимальная сумма, которую вы можете заработать — {max(deposit)}")
 
+# ________________________________________________________________
+# dict = {}
+# while True:
+#     a = input()
+#     if a  == 'конец':
+#         break
+#     else:
+#         lst = a.split(',')
+#         dict[lst[0]] = int(lst[1])
+# for key, value in sorted(dict.items()), key = lambda  x: (x[1], x[0])):
+#     print(r)
+
+print(not
+      False
+      and
+      True
+      or
+      False
+      and
+      not
+      True)
 
 
