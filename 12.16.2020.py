@@ -1273,4 +1273,103 @@ from math import *
 #     for k, v in a.items():
 #         print(f"{k}, {v}")
 
+# ------------------------------
 
+
+# ans = (len(set(objects)))
+# print(ans)
+
+# for obj in objects: # доступная переменная objects
+#     ans += 1
+# print(ans)
+#
+# a = set(objects)
+# print(a)
+# # s = {}
+# # for i in range(objects):
+# #     s.update(objects[i])
+# # print(s)
+
+# ________________________________
+# Создайте класс Counter, экземпляры которого будут подсчитывать внутри себя значения.
+#
+# В классе Counter нужно определить метод start_from, который принимает один необязательный аргумент - значение, с которого начинается подсчет, по умолчанию равно 0
+#
+# Также нужно создать метод increment, который увеличивает счетчик на 1.
+#
+# Затем необходимо создать метод display, который печатает фразу "Текущее значение счетчика = <value>" и метод reset,  который обнуляет экземпляр счетчика
+#
+# Пример работы с классом Counter
+
+#
+# class Counter:
+#     def start_from(self, x = 0):
+#         self.x = x
+#     def increment(self):
+#         self.x += 1
+#     def display(self):
+#         print(f'Текущее значение счетчика = {self.x}')
+#     def reset(self):
+#         self.x = 0
+#
+# x = Counter()
+# x.start_from(9)
+# x.reset()
+# x.increment()
+# x.display() # печатает "Текущее значение счетчика = 1"
+
+# x.increment()
+# x.display() # печатает "Текущее значение счетчика = 2"
+# ______________________________
+# Создайте класс Point. У этого класса должны быть
+#
+# метод set_coordinates, который принимает координаты по x и по y, и сохраняет их в экземпляр класса соответственно в атрибуты x и y
+# метод get_distance, который обязательно принимает экземпляр класса Point и возвращает расстояние между двумя точками по теореме Пифагора. В случае, если в данный метод передается не экземпляр класса Point необходимо вывести сообщение "Передана не точка"
+# Пример работы с классом Point
+#
+# p1 = Point()
+# p2 = Point()
+# p1.set_coordinates(1, 2)
+# p2.set_coordinates(4, 6)
+# d = p1.get_distance(p2) # вернёт 5.0
+# p1.get_distance(10) # Распечатает "Передана не точка"
+
+# class Point:
+#     def set_coordinates(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#     def get_distance(self, arg):
+#         if isinstance(arg, Point):
+#             return ((self.x - arg.x) ** 2 + (self.y - arg.y) ** 2) ** 0.5
+#         else:
+#             print(f'Передана не точка')
+#
+# x = Point()
+# y = Point()
+# x.set_coordinates(1, 2)
+# y.set_coordinates(4, 6)
+# d = x.get_distance(y) # вернёт 5.0
+# # x.get_distance(10) # Распечатает "Передана не точка"
+# # Теорема Пифагора по 2 точкам (если кому поможет):
+# # s = ((x2-x1)**2+(y2-y1)**2)**0.5
+
+# --------------------------------------
+# # Создайте класс Laptop, у которого есть:
+# #
+# # конструктор __init__, принимающий 3 аргумента: бренд, модель и цену ноутбука. На основании этих аргументов нужно для экземпляра создать атрибуты brand, model, price и также атрибут laptop_name - строковое значение, вида "<brand> <model>"
+#
+# class Laptop:
+#     def __init__(self, brand, model, price):
+#         self.brand = brand
+#         self.model = model
+#         self.price = price
+#         self.laptop_name = f'{brand} {model}'
+#
+#
+# laptop1=Laptop('Asus', '18-bdfx', 37000)
+# laptop2=Laptop('Samsung', '13-bsdf0xx', 47000)
+#
+# hp = Laptop('hp', '15-bw0xx', 57000)
+# print(hp.price) # выводит 57000
+# print(hp.laptop_name) # выводит "hp 15-bw0xx"
