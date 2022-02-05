@@ -502,11 +502,487 @@
 # print(p.repeat(5))
 
 # _________________________________
+# В этой задаче у нас будет один родительский класс Transport и три дочерних класса (Car, Boat, Plane).
+#
+# В классе Transport должны быть реализованы:
+#
+# метод __init__, который создает атрибуты brand, max_speed и kind. Значения атрибутов brand, max_speed, kind поступают при вызове метода __init__. При этом значение kind не является обязательным и по умолчанию имеет значение None;
+# метод __str__, который будет возвращать строку формата: "Тип транспорта <kind> марки <brand> может развить скорость <максимальная скорость> км/ч".
+# В классе Car должны быть реализованы:
+#
+# метод __init__, создающий у экземпляра атрибуты brand, max_speed, mileage и приватный атрибут gasoline_residue. Все значения этих атрибутов передаются при вызове класса Car. Внутри инициализации делегируйте создание атрибутов brand, max_speed, kind родительскому классу Transport, при этом атрибуту kind передайте значение "Car";
+# свойство-геттер gasoline, который будет возвращать строку: "Осталось бензина на <gasoline_residue> км";
+# свойство-сеттер gasoline, которое должно принимать ТОЛЬКО целое число value, увеличивает уровень топлива gasoline_residue на переданное значение и затем вывести фразу 'Объем топлива увеличен на <value> л и составляет <gasoline_residue> л'. Если в значение value подается не целое число, вывести 'Ошибка заправки автомобиля'.
+# В классе Boat должны быть реализованы:
+#
+# метод __init__, создающий у экземпляра атрибуты brand, max_speed, kind, owners_name. Все значения этих атрибутов передаются при вызове класса Boat. Внутри инициализации делегируйте создание атрибутов brand, max_speed, kind родительскому классу Transport, при этом атрибуту kind передайте значение "Boat";
+# метод __str__, который будет возвращать строку: 'Этой лодкой марки <brand> владеет <owners_name>'.
+# В классе Plane должны быть реализованы:
+#
+# метод __init__, создающий у экземпляра атрибуты brand, max_speed, capacity. Внутри инициализации делегируйте создание атрибутов brand, max_speed, kind родительскому классу Transport, при этом атрибуту kind передайте значение "Plane";
+# метод __str__, который будет возвращать строку: 'Самолет марки <brand> вмещает в себя <capacity> людей'.
+#
+# class Transport:
+#
+#     def __init__(self, brand, max_speed, kind=None):
+#         self.brand = brand
+#         self.max_speed = max_speed
+#         self.kind = kind
+#
+#     def __str__(self):
+#         return f"Тип транспорта {self.kind} марки {self.brand} может развить скорость {self.max_speed} км/ч"
+#
+#
+# class Car(Transport):
+#
+#     def __init__(self, brand, max_speed,  mileage, gasoline_residue):
+#         super().__init__(brand, max_speed, kind='Car')
+#         self.mileage = mileage
+#         self.__gasoline_residue = gasoline_residue
+#
+#     @property
+#     def gasoline(self):
+#         return f"Осталось бензина на {self.__gasoline_residue} км"
+#
+#     @gasoline.setter
+#     def gasoline(self, value):
+#         if isinstance(value, int):
+#             self.__gasoline_residue += value
+#             print(f"Объем топлива увеличен на {value} л и составляет {self.__gasoline_residue} л")
+#         else:
+#             print("Ошибка заправки автомобиля")
+#
+# class Boat(Transport):
+#
+#     def __init__(self, brand, max_speed, owners_name):
+#         super().__init__(brand, max_speed, kind='Boat')
+#         self.owners_name = owners_name
+#
+#     def __str__(self):
+#         return f"Этой лодкой марки {self.brand} владеет {self.owners_name}"
+#
+#
+# class Plane(Transport):
+#
+#     def __init__(self, brand, max_speed, capacity):
+#         super().__init__(brand, max_speed, kind='Plane')
+#         self.capacity = capacity
+#
+#     def __str__(self):
+#         return f"Самолет марки {self.brand} вмещает в себя {self.capacity} людей"
+#
+#
+#
+# transport = Transport('Telega', 10)
+# print(transport)  # Тип транспорта None марки Telega может развить скорость 10 км/ч
+# bike = Transport('shkolnik', 20, 'bike')
+# print(bike)  # Тип транспорта bike марки shkolnik может развить скорость 20 км/ч
+#
+# first_plane = Plane('Virgin Atlantic', 700, 450)
+# print(first_plane)  # Самолет марки Virgin Atlantic вмещает в себя 450 людей
+# first_car = Car('BMW', 230, 75000, 300)
+# print(first_car)  # Тип транспорта Car марки BMW может развить скорость 230 км/ч
+# print(first_car.gasoline)  # Осталось бензина на 300 км
+# first_car.gasoline = 20  # Печатает 'Объем топлива увеличен на 20 л и составляет 320 л'
+# print(first_car.gasoline)  # Осталось бензина на 320 км
+# second_car = Car('Audi', 230, 70000, 130)
+# second_car.gasoline = [None]  # Печатает 'Ошибка заправки автомобиля'
+# first_boat = Boat('Yamaha', 40, 'Petr')
+# print(first_boat)  # Этой лодкой марки Yamaha владеет Petr
 
-class Transport:
+# __________________________
+#
+# Давайте представим, что в 2020 году в Москве проводили опрос и выявили, к какому классу люди себя относят. По результатам опроса все люди разделились на сладкоежек, вегетарианцев и любителей мяса. Давайте напишем программу, которая поможет нам подвести итоги опроса. Для создания программы нужно:
+#
+# 1. Создать родительский класс Initialization, который состоит из:
+#
+#  метода инициализации, в который поступают аргументы: capacity - целое число, food - список из строковых названий еды. Если в значение capacity  передается не целое число, вывести надпись ‘Количество людей должно быть целым числом’ и не создавать для таких экземпляров атрибуты capacity и food.
+# 2. Создать дочерний класс Vegetarian от класса Initialization, который состоит из:
+#
+# метода инициализации, принимающего аргументы capacity, food. Нужно создать одноименные атрибуты через вызов родительского метода __init__.
+# метода __str__, который возвращает строку формата "<capacity> людей предпочитают не есть мясо! Они предпочитают <food>"
+# 3. Создать дочерний класс MeatEater от класса Initialization, который состоит из:
+#
+# метода инициализации, принимающего аргументы capacity, food. Нужно создать одноименные атрибуты через вызов родительского метода __init__.
+# метода __str__, который возвращает строку формата "<capacity> мясоедов в Москве! Помимо мяса они едят еще и <food>"
+# 4. Создать дочерний класс SweetTooth от класса Initialization, который состоит из:
+#
+# метода инициализации, принимающего аргументы capacity, food. Нужно создать одноименные атрибуты через вызов родительского метода __init__.
+# магического метода __str__, который возвращает строку формата ‘Сладкоежек в Москве <capacity>. Их самая любимая еда: <food>’;
+# магического  метода __eq__, который будет позволять сравнивать экземпляры класса SweetTooth  с числами и другими нашими классами. Если сравнение происходит с целым числом и атрибут capacity с ним совпадает, то необходимо вернуть True, в противном случае - False. Если же сравнение идет с другим нашим классом(Vegetarian или MeatEater) и значения атрибутов capacity равны, то возвращается True, в противном случае - False. А если же сравнивается с другим типом данных, верните ‘Невозможно сравнить количество сладкоежек с <значение>’;
+# магического  метода __lt__. Если сравнение происходит с целым числом и количество сладкоежек (атрибут capacity) меньше, необходимо вернуть True, в противном случае - False. Если сравнение происходит с экземпляром одного из наших классов Vegetarian или MeatEater и сладкоежек меньше, то верните True, в противном случае верните False. В случае если сравнение идет с остальными типами данных, верните ‘Невозможно сравнить количество сладкоежек с <значение>’
+# магического  метода __gt__. Если сравнение происходит с целым числом и количество сладкоежек больше, необходимо вернуть значение True, в противном же случае - False. Если сравнение происходит с другим нашим классом Vegetarian или MeatEater и сладкоежек больше, то верните True, в противном случае - False. В случае если сравнение идет с остальными типами данных, верните ‘Невозможно сравнить количество сладкоежек с <значение>’
+# class Initialization:
+#     def __init__(self, capacity, food):
+#         if isinstance(capacity, int):
+#             self.capacity = capacity
+#             self.food = food
+#         return 'Количество людей должно быть целым числом'
+#
+# class Vegetarian(Initialization):
+#      def __init__(self, capacity, food ):
+#          super().__init__(capacity, food)
+#
+#      def __str__(self):
+#          return f"{self.capacity} людей предпочитают не есть мясо! Они предпочитают {self.food}"
+#
+# class MeatEater(Initialization):
+#     def __init__(self, capacity, food):
+#         super().__init__(capacity, food)
+#
+#     def __str__(self):
+#         return f"{self.capacity} мясоедов в Москве! Помимо мяса они едят еще и {self.food}"
+#
+# class SweetTooth(Initialization):
+#     def __init__(self, capacity, food):
+#         super().__init__(capacity, food)
+#
+#     def __str__(self):
+#         return f"Сладкоежек в Москве {self.capacity}. Их самая любимая еда: {self.food}"
+#
+#     def __eq__(self, other):
+#         if isinstance(other, int):
+#             return self.capacity == other
+#         elif isinstance(other, (Vegetarian, MeatEater)):
+#             return self.capacity == other.capacity
+#         else:
+#             return f"Невозможно сравнить количество сладкоежек с {other}"
+#
+#     def __lt__(self, other):
+#         if isinstance(other, int):
+#             return self.capacity < other
+#         elif isinstance(other, (Vegetarian, MeatEater)):
+#             return self.capacity < other.capacity
+#         else:
+#             return f"Невозможно сравнить количество сладкоежек с {other}"
+#
+#     def __gt__(self, other):
+#         if isinstance(other, int):
+#             return self.capacity > other
+#         elif isinstance(other, (Vegetarian, MeatEater)):
+#             return self.capacity > other.capacity
+#         else:
+#             return f"Невозможно сравнить количество сладкоежек с {other}"
+#
+#
+# v_first = Vegetarian(10000, ['Орехи', 'овощи', 'фрукты'])
+# print(v_first)  # 10000 людей предпочитают не есть мясо! Они предпочитают ['Орехи', 'овощи', 'фрукты']
+# v_second = Vegetarian([23], ['nothing'])  # Количество людей должно быть целым числом
+# m_first = MeatEater(15000, ['Жареную картошку', 'рыба'])
+# print(m_first)  # 15000 мясоедов в Москве! Помимо мяса они едят еще и ['Жареную картошку', 'рыба']
+# s_first = SweetTooth(30000, ['Мороженое', 'Чипсы', 'ШОКОЛАД'])
+# print(s_first)  # Сладкоежек в Москве 30000. Их самая любимая еда: ['Мороженое', 'Чипсы', 'ШОКОЛАД']
+# print(s_first > v_first)  # True
+# print(30000 == s_first)  # True
+# print(s_first == 25000)  # False
+# print(100000 < s_first)  # False
+# print(100 < s_first)  # True
 
-class Car(Transport):
+# ________________________
+# class Wallet:
+#     def __init__(self, currency, balance):
+#         try:
+#             isinstance(currency, str)
+#         except TypeError:
+#             print("Неверный тип валюты")
+#         try:
+#             len(str(currency)) == 3
+#         except NameError:
+#             print("Неверная длина названия валюты")
+#         try:
+#             currency == str(currency).upper()
+#         except ValueError:
+#             print("Название должно состоять только из заглавных букв")
+#         else:
+#             self.currency = currency
+#             self.balance = balance
+#
+#     def __eq__(self, other):
+#         try:
+#             other.currrncy == self.currency
+#         except ValueError:
+#             print("Нельзя сравнить разные валюты")
+#         try:
+#             isinstance(other, self.balance)
+#         except TypeError:
+#             print(f"Wallet не поддерживает сравнение с {self.balance}")
+#         else:
+#             return self.balance == other.balance
+#
+#
+#     def __add__(self, other):
+#         try:
+#             other.currency == self.currency and isinstance(other.balance, Wallet)
+#         except ValueError:
+#             print("Данная операция запрещена")
+#         else:
+#             return self.balance+other.balance
+#
+#     def __add__(self, other):
+#         try:
+#             other.currency == self.currency and isinstance(other.balance, Wallet)
+#         except ValueError:
+#             print("Данная операция запрещена")
+#         else:
+#             return self.balance * other.balance
+# _______________________________________________
+
+# class Wallet:
+#     def __init__(self, currency, balance):
+#         if not isinstance(currency, str):
+#             raise TypeError('Неверный тип валюты')
+#         if len(currency) != 3:
+#             raise NameError('Неверная длина названия валюты')
+#         if not currency.isupper():
+#             raise ValueError('Название должно состоять только из заглавных букв')
+#         self.currency = currency
+#         self.balance = balance
+#
+#     def __eq__(self, other):
+#         if not isinstance(other, Wallet):
+#             raise TypeError(f'Wallet не поддерживает сравнение с {other}')
+#         if self.currency != other.currency:
+#             raise ValueError('Нельзя сравнить разные валюты')
+#         return self.balance == other.balance
+#
+#     def __add__(self, other):
+#         if not isinstance(other, Wallet) and self.currency != other.currency:
+#             raise ValueError('Данная операция запрещена')
+#         return Wallet(self.currency, self.balance + other.balance)
+#
+#     def __sub__(self, other):
+#         if not isinstance(other, Wallet) and self.currency != other.currency:
+#             raise ValueError('Данная операция запрещена')
+#         return Wallet(self.currency, self.balance - other.balance)
+#
+# wallet1 = Wallet('USD', 50)
+# wallet2 = Wallet('RUB', 100)
+# wallet3 = Wallet('RUB', 150)
+# # wallet4 = Wallet(12, 150)  # исключение TypeError('Неверный тип валюты')
+# wallet5 = Wallet('qwerty', 150)  # исключение NameError('Неверная длина названия валюты')
+# wallet6 = Wallet('abc', 150)  # исключение ValueError('Название должно состоять только из заглавных букв')
+# print(wallet2 == wallet3)  # False
+# print(wallet2 == 100)  # TypeError('Wallet не поддерживает сравнение с 100')
+# print(wallet2 == wallet1)  # ValueError('Нельзя сравнить разные валюты')
+# wallet7 = wallet2 + wallet3
+# print(wallet7.currency, wallet7.balance)  # печатает 'RUB 250'
+# wallet2 + 45  # ValueError('Данная операция запрещена')
+#
+
+# def  longest_word_in_file(file_name):
+#     file = open(file_name,"r", encoding='utf-8')
+#     max_words = ""
+#     for i in file:
+#         words = i.split()
+#         for w in words:
+#             word_without = remove_punc(w)
+#             if len(word_without) >= len(max_words):
+#                 max_words = word_without
+#     file.close()
+#     return word_without
+#
+# def remove_punc(w):
+#     from string import punctuation
+#     for p in punctuation:
+#         if p in w:
+#             w = w.replace(p, '')
+#     return w
+#
+# print(longest_word_in_file("file.txt"))
+import random
+
+# _______________________________
+# Реализуйте класс MoneyBox, для работы с виртуальной копилкой.
+#
+# Каждая копилка имеет ограниченную вместимость, которая выражается целым числом – количеством монет, которые можно положить в копилку. Класс должен поддерживать информацию о количестве монет в копилке, предоставлять возможность добавлять монеты в копилку и узнавать, можно ли добавить в копилку ещё какое-то количество монет, не превышая ее вместимость.
+#
+# Класс должен иметь следующий вид
+#
+#
+# class MoneyBox:
+#     def __init__(self, capacity):
+#        self.capacity = capacity
+#
+#     def can_add(self, v):
+#         if self.capacity - v >= 0:
+#             return True
+#             self.v = v
+#         else:
+#             return False
+#
+#     def add(self, v):
+#         self.capacity = self.capacity - v
+#
+#
+# x = MoneyBox(10)
+#
+# x.add(5)
+#
+# x.add(5)
+#
+# print(x.can_add(1))
+#
+# _____________________________
+# Вам дается последовательность целых чисел и вам нужно ее обработать и вывести на экран сумму первой пятерки чисел из этой последовательности, затем сумму второй пятерки, и т. д.
+#
+# Но последовательность не дается вам сразу целиком. С течением времени к вам поступают её последовательные части. Например, сначала первые три элемента, потом следующие шесть, потом следующие два и т. д.
+#
+# Реализуйте класс Buffer, который будет накапливать в себе элементы последовательности и выводить сумму пятерок последовательных элементов по мере их накопления.
+#
+# Одним из требований к классу является то, что он не должен хранить в себе больше элементов, чем ему действительно необходимо, т. е. он не должен хранить элементы, которые уже вошли в пятерку, для которой была выведена сумма.
+#
+#
+#
+# class Buffer:
+#     def __init__(self):
+#         self.buffer = []
+#
+#     def add(self, *args):
+#         self.aftor = []
+#         self.buffer += list(args)
+#         repetit = len(self.buffer) // 5
+#         number = len(self.buffer) % 5
+#         a = 0
+#         b = 5
+#         for i in range(repetit):
+#             self.aftor.append(sum(self.buffer[a:b]))
+#             a += b + 1
+#             b += a
+#         self.buffer = list(self.buffer[-number:])
+#         if len(self.buffer) == 5:
+#             # self.aftor.append(sum(self.buffer))
+#             self.buffer = []
+#
+#
+#     def get_current_part(self):
+#         print(*self.aftor, sep="\n")
+#         print(self.buffer)
+#         return self.buffer
+#
+#
+# buf = Buffer()
+# buf.add(1, 2, 3)
+# buf.get_current_part() # вернуть [1, 2, 3]
+# buf.add(4, 5, 6) # print(15) – вывод суммы первой пятерки элементов
+# buf.get_current_part() # вернуть [6]
+# buf.add(7, 8, 9, 10) # print(40) – вывод суммы второй пятерки элементов
+# buf.get_current_part() # вернуть []
+# buf.add(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1) # print(5), print(5) – вывод сумм третьей и четвертой пятерки
+# buf.get_current_part() # вернуть [1]
+#
+#
+# # buf = Buffer()
+# # buf.add(1, 2, 3)
+# # pr(buf.get_current_part()) # вернуть [1, 2, 3]
+# # buf.add(4, 5, 6) # print(15) – вывод суммы первой пятерки элементов
+# # print(buf.get_current_part()) # вернуть [6]
+# # buf.add(7, 8, 9, 10) # print(40) – вывод суммы второй пятерки элементов
+# # print(buf.get_current_part()) # вернуть []
+# # buf.add(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1) # print(5), print(5) – вывод сумм третьей и четвертой пятерки
+# # print(buf.get_current_part()) # вернуть [1]
+# #
+
+# class NonPositiveError:
+#     pass
+#
+# class PositiveList(list):
+#     pass
+#
+#     def append(self, x):
+#         try:
+#             x > 0
+#         except:
+#             raise NonPositiveError
+#         else:
+#             super().append(x)
+# ______________________________________
+#
+# class NonPositiveError:
+#     pass
+#
+# class PositiveList(list):
+#     pass
+#
+#     def append(self, x):
+#         try:
+#             x > 0
+#         except:
+#             raise NonPositiveError
+#         else:
+#             super().append(x)
+#
+#
+# a = PositiveList()
+# a.append(1)
+# print(a)
+# a.append(0)
+# print(a)
+# a.append(-41)
+# print(a)
+
+# _________________________
+# Задание 16.9.1
+# Создайте класс любых геометрических фигур, где на выход мы получаем характеристики фигуры. Каждый экземпляр должен иметь атрибуты, которые зависят от выбранной фигуры. Например, для прямоугольника это будут аргументы x, y, width и height.
+#
+# class GeometricFigure():
+#     def __init__(self,width, height ):
+#         self.x = width
+#         self.y = height
+#
+#     def Parameters(self):
+#         return f"width = {self.x} height = {self.y}"
+#
+# n = GeometricFigure(5, 9)
+# print(n.Parameters())
+# # _______________________________________
+# # Задание 16.9.3
+# # В проекте «Дом питомца» скоро появится новая услуга: электронный кошелек. То есть система будет хранить данные о своих клиентах и об их финансовых операциях.
+# #
+# # Вам нужно написать программу, обрабатывающую данные, и на выходе в консоль получить следующее: Клиент "Иван Петров". Баланс: 50 руб.
+#
+# class Wallet():
+#     def __init__(self, name, surname, balance):
+#         self. name = name
+#         self.surname = surname
+#         self.balance = int(balance)
+#
+#     def Parameters(self):
+#        return f"Клиент {self. name} {self. surname}. Баланс: {self.balance} руб."
+#
+#     def IncreaseBalance(self, sum):
+#         self.balance += int(sum)
+#
+#     def DecreaseBalance(self, sum):
+#         self.balance += int(sum)
+#
+# n = Wallet("Иван", "Петров", 50)
+# print(n.Parameters())
+# print(n.IncreaseBalance(100))
+# print(n.Parameters())
+# # _________________________________________
+# # Задание 16.9.4
+#
+# # Команда проекта «Дом питомца» планирует большой корпоратив для своих волонтеров. Вам необходимо написать программу, которая позволяла бы составлять список нескольких гостей. Решите задачу с помощью метода конструктора и примените один из принципов наследования.
+# #
+# # При выводе в консоль вы должны получить:  “Иван Петров, г.Москва, статус "Наставник"
+#
+# class Corporate():
+#     def __init__(self, name, city, status):
+#         self.name = name
+#         self.city = city
+#         self.status = status
+#
+#     def Parameters(self):
+#         return f"{self. name}, г.{self.city},статус '{self.status}'"
+#
+# n = Corporate("Иван Петров","Москва" ,"Наставник")
+# print(n.Parameters())
 
 
-class Boat(Transport):
-class Transport:
+
+
+
+
+
+
+
